@@ -1,0 +1,55 @@
+rules_version = '2';
+
+service cloud.firestore {
+  match /databases/{database}/documents {
+    // Helper functions
+    function isAuthenticated() {
+      return request.auth != null;
+    }
+    
+    function isOwner(userId) {
+      return request.auth.uid == userId;
+    }
+    
+    function isCoach() {
+      return isAuthenticated() && 
+        exists(/databases/$(database)/documents/users/$(request.auth.uid)) && 
+        get(/databases/$(database)/documents/users/$(request.auth.uid)).data.get('role', 'student') == 'coach';
+    }
+
+    match /users/{userId} {
+      allow read: if isOwner(userId) || isCoach();
+      allow create: if isAuthenticated() && request.auth.uid == userId;
+      allow update: if isOwner(userId);
+    }
+    
+    match /profiles/{profileId} {
+      allow read: if true;
+      allow write: if isCoach();
+    }
+    
+    match /schedules/{scheduleId} {
+      allow read: if isAuthenticated();
+      allow create, delete: if isCoach();
+      // Allow students to update bookedSlots when booking
+      allow update: if isAuthenticated();
+    }
+    
+    match /bookings/{bookingId} {
+      // Coach can read all, Student can read their own
+      allow read: if isAuthenticated() && (resource.data.studentId == request.auth.uid || isCoach());
+      allow create: if isAuthenticated() && (request.resource.data.studentId == request.auth.uid || isCoach());
+      // Coach can update status
+      allow update: if isAuthenticated() && (resource.data.studentId == request.auth.uid || isCoach());
+      allow delete: if isAuthenticated() && (resource.data.studentId == request.auth.uid || isCoach());
+    }
+    
+    match /payments/{paymentId} {
+      allow read, write: if isAuthenticated();
+    }
+    
+    match /notifications/{notificationId} {
+      allow read, write: if isAuthenticated();
+    }
+  }
+}
