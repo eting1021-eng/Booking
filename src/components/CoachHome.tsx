@@ -375,7 +375,7 @@ export default function CoachHome({ sessions, bookings, profile, allUsers = {} }
 
   if (showAddForm) {
     return (
-      <div className="flex flex-col h-full px-8 pt-10 pb-4 animate-in fade-in">
+      <div className="flex flex-col min-h-full px-5 sm:px-8 pt-8 sm:pt-10 pb-28 animate-in fade-in">
         <div className="flex justify-between items-center mb-6">
           <h1 className="text-2xl font-bold text-[#2F3437]">
             {editingSessionId ? '編輯課程時段' : isCopying ? '複製並新增課程' : '新增課程時段'}
@@ -387,7 +387,7 @@ export default function CoachHome({ sessions, bookings, profile, allUsers = {} }
             <span>💡 正在複製現有課程的內容。您只需在下方修改新的「日期」或其它時間欄位，然後點擊「儲存時段」即可新增一門相同課程！</span>
           </div>
         )}
-        <form onSubmit={handleAdd} className="space-y-4 overflow-y-auto no-scrollbar pb-24">
+        <form onSubmit={handleAdd} className="space-y-4 pb-28">
            <div>
             <label className="block text-sm font-bold text-[#7A7A7A] mb-1">課程名稱</label>
             <input required type="text" value={newTitle || ''} onChange={e => setNewTitle(e.target.value)} className="w-full bg-white border border-[#C9D6D0] rounded-xl px-4 py-3 text-[#2F3437] focus:outline-none focus:border-[#7FA8A4]" />
@@ -435,8 +435,8 @@ export default function CoachHome({ sessions, bookings, profile, allUsers = {} }
   }
 
   return (
-    <div className="flex flex-col h-full animate-in fade-in duration-500">
-      <div className="bg-[#7FA8A4] px-8 pt-10 pb-6 rounded-b-[40px] shadow-sm relative">
+    <div className="flex flex-col min-h-full animate-in fade-in duration-500 pb-36">
+      <div className="bg-[#7FA8A4] px-5 sm:px-8 pt-8 sm:pt-10 pb-6 rounded-b-[40px] shadow-sm relative">
         <h1 className="text-2xl font-bold text-white mb-1">教練管理後台</h1>
         <p className="text-[#E0EBE8] text-sm mb-6">隨時更新您的課程與首頁</p>
         
@@ -462,7 +462,7 @@ export default function CoachHome({ sessions, bookings, profile, allUsers = {} }
         </div>
       </div>
       
-      <div className="flex-1 px-6 mt-6 space-y-4 overflow-y-auto no-scrollbar pb-32">
+      <div className="px-5 sm:px-6 mt-6 space-y-4">
         {activeTab === 'dashboard' && (
           <>
             <div className="flex justify-between items-center mb-2">

@@ -17,8 +17,8 @@ export default function StudentHome({ sessions, bookings, onBookClick }: Student
     : sessions.filter(s => s.date === selectedDate);
 
   return (
-    <div className="flex flex-col h-full animate-in fade-in duration-500">
-      <div className="px-8 pt-10 pb-4">
+    <div className="flex flex-col min-h-full animate-in fade-in duration-500 pb-36">
+      <div className="px-5 sm:px-8 pt-8 sm:pt-10 pb-4">
         <div className="flex justify-between items-start mb-2">
           <div>
             <h1 className="text-2xl font-bold mb-1">桌球課程預約</h1>
@@ -47,7 +47,7 @@ export default function StudentHome({ sessions, bookings, onBookClick }: Student
         </div>
       </div>
       
-      <div className="flex-1 px-6 space-y-4 pb-24 overflow-y-auto no-scrollbar">
+      <div className="px-5 sm:px-6 space-y-4">
         {viewMode === 'calendar' && (
           <CalendarView 
             sessions={sessions} 

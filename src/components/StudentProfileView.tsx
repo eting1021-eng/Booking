@@ -32,7 +32,7 @@ export default function StudentProfileView() {
   };
 
   return (
-    <div className="flex flex-col h-full animate-in fade-in p-8 pt-10 pb-24">
+    <div className="flex flex-col min-h-full animate-in fade-in p-5 sm:p-8 pt-8 sm:pt-10 pb-28">
       <div className="flex justify-between items-center mb-6">
         <h1 className="text-2xl font-bold text-[#2F3437]">個人資料</h1>
         {!isEditing && (

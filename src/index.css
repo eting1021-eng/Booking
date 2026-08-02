@@ -3,6 +3,8 @@
 @layer base {
   html, body {
     font-family: 'BiauKai', 'DFKai-SB', 'Kaiti TC', serif;
+    -webkit-overflow-scrolling: touch;
+    overscroll-behavior-y: auto;
   }
 }
 
@@ -13,5 +15,7 @@
   .no-scrollbar {
     -ms-overflow-style: none;
     scrollbar-width: none;
+    -webkit-overflow-scrolling: touch;
+    touch-action: pan-y;
   }
 }

@@ -184,6 +184,18 @@ export default function CalendarView({ sessions, selectedDate, onSelectDate }: C
           );
         })}
       </div>
+
+      {/* Calendar Legend */}
+      <div className="flex items-center justify-end gap-3.5 mt-4 pt-3 border-t border-[#F6F5F2] text-[11px] font-bold text-[#7A7A7A]">
+        <div className="flex items-center gap-1.5">
+          <span className="w-2 h-2 rounded-full bg-[#7FA8A4] inline-block"></span>
+          <span>綠色：還有空位</span>
+        </div>
+        <div className="flex items-center gap-1.5">
+          <span className="w-2 h-2 rounded-full bg-[#D9A46A] inline-block"></span>
+          <span>橘色：預約已滿</span>
+        </div>
+      </div>
     </div>
   );
 }

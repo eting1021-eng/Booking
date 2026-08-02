@@ -13,7 +13,7 @@ export default function LandingPage({ profile, onEnterBooking }: LandingPageProp
   const [showContact, setShowContact] = useState(false);
 
   return (
-    <div className="flex flex-col h-full animate-in fade-in duration-500 overflow-y-auto no-scrollbar pb-32 relative">
+    <div className="flex flex-col min-h-full animate-in fade-in duration-500 pb-32 relative">
       {/* Contact Info (Top Right Toggle) */}
       {profile.contactInfo && (
         <div className="absolute top-6 right-6 z-30 flex flex-col items-end">

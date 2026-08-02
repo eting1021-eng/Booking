@@ -252,8 +252,8 @@ export default function App() {
 
   if (!user) {
     return (
-      <div className="min-h-screen bg-[#F6F5F2] text-[#2F3437] font-sans flex justify-center items-center p-4">
-        <div className="w-full max-w-[420px] bg-white h-[800px] max-h-full rounded-[40px] flex flex-col shadow-2xl relative overflow-hidden border-8 border-white">
+      <div className="min-h-[100dvh] bg-[#F6F5F2] text-[#2F3437] font-sans flex justify-center items-center sm:p-4">
+        <div className="w-full sm:max-w-[420px] bg-white h-[100dvh] sm:h-[800px] sm:max-h-[90vh] sm:rounded-[40px] flex flex-col shadow-2xl relative overflow-hidden sm:border-8 border-white">
           <Login />
         </div>
       </div>
@@ -262,8 +262,8 @@ export default function App() {
 
   if (userProfile && !userProfile.isProfileComplete) {
     return (
-      <div className="min-h-screen bg-[#F6F5F2] text-[#2F3437] font-sans flex justify-center items-center p-4">
-        <div className="w-full max-w-[420px] bg-white h-[800px] max-h-full rounded-[40px] flex flex-col shadow-2xl relative overflow-hidden border-8 border-white">
+      <div className="min-h-[100dvh] bg-[#F6F5F2] text-[#2F3437] font-sans flex justify-center items-center sm:p-4">
+        <div className="w-full sm:max-w-[420px] bg-white h-[100dvh] sm:h-[800px] sm:max-h-[90vh] sm:rounded-[40px] flex flex-col shadow-2xl relative overflow-hidden sm:border-8 border-white">
           <ProfileCompletion />
         </div>
       </div>
@@ -271,8 +271,8 @@ export default function App() {
   }
 
   return (
-    <div className="min-h-screen bg-[#F6F5F2] text-[#2F3437] font-sans flex justify-center items-center p-4">
-      <div className="w-full max-w-[420px] bg-white h-[800px] max-h-full rounded-[40px] flex flex-col shadow-2xl relative overflow-hidden border-8 border-white">
+    <div className="min-h-[100dvh] bg-[#F6F5F2] text-[#2F3437] font-sans flex justify-center items-center sm:p-4">
+      <div className="w-full sm:max-w-[420px] bg-white h-[100dvh] sm:h-[800px] sm:max-h-[90vh] sm:rounded-[40px] flex flex-col shadow-2xl relative overflow-hidden sm:border-8 border-white">
         
         <div className="flex-1 overflow-y-auto no-scrollbar relative">
           
@@ -280,7 +280,7 @@ export default function App() {
             studentView === 'landing' ? (
               <LandingPage profile={profile} onEnterBooking={() => setStudentView('booking')} />
             ) : studentView === 'my-bookings' ? (
-              <div className="flex flex-col h-full animate-in fade-in p-8 pt-10 pb-24">
+              <div className="flex flex-col min-h-full animate-in fade-in p-5 sm:p-8 pt-8 sm:pt-10 pb-36">
                 <div className="flex justify-between items-center mb-6">
                   <h1 className="text-2xl font-bold text-[#2F3437]">我的預約紀錄</h1>
                 </div>
@@ -307,7 +307,7 @@ export default function App() {
                 }).length === 0 ? (
                   <p className="text-[#7A7A7A] mt-10 text-center font-bold text-sm">尚無相關預約紀錄。</p>
                 ) : (
-                  <div className="space-y-4">
+                  <div className="space-y-4 pb-16">
                     {bookings.filter(b => {
                       const s = sessions.find(sess => sess.id === b.sessionId);
                       if (!s) return false;
